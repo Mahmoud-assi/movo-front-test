@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { MapContainer, Marker, TileLayer } from 'react-leaflet'
 import L, { type LatLngExpression } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { Box, IconButton, Dialog } from '@mui/material'
+import { Box, IconButton, Dialog, useTheme } from '@mui/material'
 import ZoomOutMapIcon from '@mui/icons-material/ZoomOutMap'
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen'
 import type { Coordinates } from '@/types/custom'
@@ -11,6 +11,7 @@ import { rgba } from '@/utils/color'
 
 export function Map({ height = 150, lat, lng }: { height?: number | string } & Coordinates) {
   const [expanded, setExpanded] = useState(false)
+  const { palette, direction } = useTheme()
 
   return (
     <Box>
@@ -20,14 +21,14 @@ export function Map({ height = 150, lat, lng }: { height?: number | string } & C
           sx={{
             position: 'absolute',
             top: 8,
-            right: 8,
+            ...(direction === 'ltr' ? { right: 8 } : { left: 8 }),
             zIndex: 1000,
-            bgcolor: ({ palette }) => rgba(palette.background.default, 0.925),
+            bgcolor: rgba(palette.background.default, 0.925),
             ':hover': {
-              bgcolor: ({ palette }) => palette.background.default,
+              bgcolor: palette.background.default,
             },
             svg: {
-              fill: ({ palette }) => palette.text.secondary,
+              fill: palette.text.secondary,
               width: 20,
               height: 20,
             },
@@ -85,73 +86,78 @@ const MapContent = ({
   height?: string | number
   showClose?: boolean
   handleClose?: () => void
-}) => (
-  <Box
-    component={motion.div}
-    initial={{ opacity: 0, scale: 0.95 }}
-    animate={{ opacity: 1, scale: 1 }}
-    exit={{ opacity: 0, scale: 0.95 }}
-    transition={{ duration: 0.3 }}
-    sx={{
-      position: 'relative',
-      width: '100%',
-      height,
-    }}
-  >
-    {showClose && (
-      <IconButton
-        onClick={handleClose}
+}) => {
+  const { palette } = useTheme()
+
+  return (
+    <Box
+      component={motion.div}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.3 }}
+      sx={{
+        position: 'relative',
+        width: '100%',
+        height,
+      }}
+    >
+      {showClose && (
+        <IconButton
+          onClick={handleClose}
+          sx={{
+            position: 'absolute',
+            top: 16,
+            right: 16,
+            zIndex: 1200,
+            bgcolor: rgba(palette.background.default, 0.925),
+            ':hover': {
+              bgcolor: palette.background.default,
+            },
+            svg: {
+              fill: palette.text.secondary,
+              width: 20,
+              height: 20,
+            },
+          }}
+        >
+          <CloseFullscreenIcon />
+        </IconButton>
+      )}
+      <Box
+        key={palette.mode}
+        component={MapContainer}
+        center={[lat, lng] as LatLngExpression}
+        zoom={13}
+        scrollWheelZoom
         sx={{
-          position: 'absolute',
-          top: 16,
-          right: 16,
-          zIndex: 1200,
-          bgcolor: ({ palette }) => rgba(palette.background.default, 0.925),
-          ':hover': {
-            bgcolor: ({ palette }) => palette.background.default,
-          },
-          svg: {
-            fill: ({ palette }) => palette.text.secondary,
-            width: 20,
-            height: 20,
+          borderRadius: 1,
+          height: '100%',
+          width: '100%',
+          '.leaflet-control-container > div > div > a': {
+            bgcolor: rgba(palette.background.default, 0.925),
+            ':hover': {
+              bgcolor: palette.background.default,
+            },
+            '> span': {
+              color: palette.text.secondary,
+              fontSize: 20,
+            },
           },
         }}
+        attributionControl={false}
       >
-        <CloseFullscreenIcon />
-      </IconButton>
-    )}
-    <Box
-      component={MapContainer}
-      center={[lat, lng] as LatLngExpression}
-      zoom={13}
-      scrollWheelZoom
-      sx={{
-        borderRadius: 1,
-        height: '100%',
-        width: '100%',
-        '.leaflet-control-container > div > div > a': {
-          bgcolor: ({ palette }) => rgba(palette.background.default, 0.925),
-          ':hover': {
-            bgcolor: ({ palette }) => palette.background.default,
-          },
-          '> span': {
-            color: ({ palette }) => palette.text.secondary,
-            fontSize: 20,
-          },
-        },
-      }}
-      attributionControl={false}
-    >
-      <TileLayer attribution="" url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      {lat && lng && (
-        <Marker
-          position={[lat, lng] as LatLngExpression}
-          icon={L.icon({
-            iconUrl: '/movo.svg',
-            iconSize: [32, 32],
-          })}
-        />
-      )}
+        <TileLayer attribution="" url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {lat && lng && (
+          <Marker
+            position={[lat, lng] as LatLngExpression}
+            icon={L.icon({
+              iconUrl: '/movo.svg',
+              iconSize: [32, 32],
+            })}
+          />
+        )}
+      </Box>
     </Box>
-  </Box>
-)
+  )
+}

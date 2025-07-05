@@ -1,7 +1,9 @@
 import { useScrollOffsetTop } from '@/hooks/useScrollOffsetTop'
-import { styled, AppBar, type AppBarProps, Stack } from '@mui/material'
+import { styled, AppBar, type AppBarProps, Stack, IconButton } from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
 import { LocaleSwitcher } from './LocaleSwitcher'
 import { LanguageSelector } from './LanguageSelector'
+import { useAppTheme } from '@/providers'
 
 export function LayoutAppbar({
   expanded = false,
@@ -11,6 +13,7 @@ export function LayoutAppbar({
   routeHasNavbars?: boolean
 }) {
   const { offsetTop: isOffset } = useScrollOffsetTop()
+  const { toggleSidebar } = useAppTheme()
 
   return (
     <AppbarRoot
@@ -18,7 +21,6 @@ export function LayoutAppbar({
       component="header"
       isOffset={isOffset}
       sx={{
-        px: routeHasNavbars ? { xs: 2, sm: 4, md: 5 } : { xs: 2, sm: 3 },
         width: {
           xs: '100%',
           sm: routeHasNavbars ? `calc(100% - ${expanded ? `300px` : `88px`})` : '100%',
@@ -26,9 +28,29 @@ export function LayoutAppbar({
         bgcolor: 'transparent',
       }}
     >
-      <Stack direction="row" spacing={2} alignItems="center">
-        <LanguageSelector />
-        <LocaleSwitcher />
+      <Stack
+        spacing={2}
+        direction="row-reverse"
+        justifyContent="space-between"
+        width="100%"
+        alignItems="center"
+        sx={{ px: routeHasNavbars ? { xs: 2, sm: 4, md: 5 } : { xs: 2, sm: 3 } }}
+      >
+        <Stack direction="row" spacing={2} alignItems="center">
+          <LanguageSelector />
+          <LocaleSwitcher />
+        </Stack>
+        <IconButton
+          onClick={() => toggleSidebar('side')}
+          sx={{
+            display: {
+              xs: !routeHasNavbars ? 'none' : 'flex',
+              sm: 'none',
+            },
+          }}
+        >
+          <MenuIcon />
+        </IconButton>
       </Stack>
     </AppbarRoot>
   )

@@ -21,9 +21,11 @@ export function ColoredSvg({ src, sx, ...other }: SvgColorProps) {
   )
 }
 
-export const Icon = (name: string, path: 'common' | 'sidebar' | 'appbar' = 'common') => (
-  <ColoredSvg src={`/assets/icons/${path}/${name}.svg`} />
-)
+export const Icon = (
+  name: string,
+  path: 'common' | 'sidebar' | 'appbar' = 'common',
+  sx?: SxProps<Theme>,
+) => <ColoredSvg src={`/assets/icons/${path}/${name}.svg`} sx={{ ...sx }} />
 
 export const Img = (name: string, path: 'common' | 'sidebar' | 'appbar' = 'common') => (
   <Box component="img" sx={{ width: 24, height: 24 }} src={`/assets/icons/${path}/${name}.svg`} />

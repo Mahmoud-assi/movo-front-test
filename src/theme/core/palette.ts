@@ -22,7 +22,7 @@ export const palette = (mode: ThemeMode): PaletteOptions => ({
   info: {
     lighter: mode === 'dark' ? '#103F5B' : '#CAFDF5',
     light: mode === 'dark' ? '#29B6F6' : '#61F3F3',
-    main: mode === 'dark' ? '#4FC3F7' : '#00B8D9',
+    main: '#105DFB',
     dark: mode === 'dark' ? '#81D4FA' : '#006C9C',
     darker: mode === 'dark' ? '#B3ECFF' : '#003768',
     contrastText: mode === 'dark' ? '#F1F1F1' : '#0F1A21',

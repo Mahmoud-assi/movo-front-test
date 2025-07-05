@@ -28,7 +28,7 @@ export const theme = (mode: ThemeMode, locale: LocaleType) =>
       },
       background: {
         default: mode === 'dark' ? '#1E1B2C' : '#F5F4EF',
-        paper: mode === 'dark' ? '#2A263B' : '#E2DAF0',
+        paper: mode === 'dark' ? '#2A263B' : '#FBFAFD',
         sidebar: mode === 'dark' ? '#322C46' : '#FFFEF9',
         white: mode === 'dark' ? '#382D53' : '#FFFEF9',
       },

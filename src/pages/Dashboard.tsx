@@ -7,7 +7,7 @@ export default function DashboardPage() {
   const { formatMessage: f } = useIntl()
 
   return (
-    <Box overflow="auto">
+    <Box overflow="hidden">
       <PageTitle>{f({ id: 'dashboard' })}</PageTitle>
       <Dashboard />
     </Box>

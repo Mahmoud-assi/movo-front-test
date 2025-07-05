@@ -24,3 +24,13 @@ export interface FilteredResult<T = any> {
 }
 
 export type Coordinates = { lat: number; lng: number }
+
+export type LocalizedString = {
+  en: string
+  ar: string
+}
+
+export interface LabelValue<T = any> {
+  label?: string
+  value: T
+}

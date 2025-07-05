@@ -30,7 +30,7 @@ export function MovoLayout({ children }: PropsWithChildren) {
         component="main"
         sx={{
           maxWidth: '100%',
-          minHeight: 'calc(100dvh - 1rem)',
+          minHeight: 'calc(100dvh - 5rem)',
           ml: 'auto',
           transition: 'width 300ms ease-out, margin-left 300ms ease-out',
         }}
@@ -38,7 +38,8 @@ export function MovoLayout({ children }: PropsWithChildren) {
         <Box
           display="grid"
           minHeight="calc(100dvh - 5rem)"
-          py={sidebarMode === 'top' ? 2 : 1}
+          pt={sidebarMode === 'top' ? 2 : 1}
+          pb={2}
           px={{ xs: 2, sm: 4, md: 5 }}
           onClick={() => smallScreen && expanded && toggleSidebar('closed')}
           sx={{
