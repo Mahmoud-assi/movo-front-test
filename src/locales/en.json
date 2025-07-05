@@ -1,0 +1,13 @@
+{
+  "movo": "movo",
+  "view": "View",
+  "dashboard": "Dashboard",
+  "users": "Users",
+  "map": "Map",
+  "orders": "Orders",
+  "vehicles": "Vehicles",
+  "notFound": "404",
+  "notFoundTitle": "Page Not Found!",
+  "notFoundDescription": "Sorry, the page you’re looking for doesn’t exist or has been moved.",
+  "backHome": "Back to Home"
+}
