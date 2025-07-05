@@ -1,69 +1,73 @@
-# React + TypeScript + Vite
+## 🚀 Getting Started
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Prerequisites
 
-Currently, two official plugins are available:
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [pnpm](https://pnpm.io/) package manager installed globally (optional but recommended)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Install pnpm globally (if you don’t have it):
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install -g pnpm
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 How to Run Locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
+pnpm run dev`
 ```
+
+## 🧱 Tech Stack
+
+### Core Framework & Language
+
+- **React 19** – Component-based UI library for building modern single-page apps.
+- **TypeScript** – Superset of JavaScript that adds static typing for better developer experience and fewer bugs.
+
+### Tooling & Build System
+
+- **Vite** – Fast and modern build tool with instant dev server start and optimized hot module replacement.
+  - ✅ _Why Vite?_ It’s built for modern ESM workflows, offers blazing-fast HMR, and integrates seamlessly with React via `@vitejs/plugin-react`.
+- **ESLint** – Linting tool to enforce code quality and consistency.
+- **vite-plugin-checker** – Provides real-time TypeScript and ESLint feedback during development.
+
+### UI & Styling
+
+- **MUI (Material UI)** – Comprehensive React UI component library:
+  - `@mui/material`, `@mui/icons-material`, `@mui/lab`, `@mui/x-data-grid`
+- **Emotion** – CSS-in-JS library used by MUI:
+  - `@emotion/react`, `@emotion/styled`, `@emotion/cache`
+- **RTL Support** – `stylis-plugin-rtl` for right-to-left layout rendering.
+- **Fonts** –
+  - `@fontsource/noto-kufi-arabic` for Arabic text.
+  - `@fontsource/roboto` for general Latin typography.
+
+### Routing
+
+- **react-router-dom v7** – Modern routing library with nested routes, loaders, and actions.
+
+### State Management
+
+- **Jotai** – Minimal and scalable atomic state management for React.
+
+### Internationalization
+
+- **react-intl** – For i18n and localization across different languages and locales.
+
+### Animation
+
+- **framer-motion** – Declarative animations and transitions for React components.
+
+### Maps & Geolocation
+
+- **Leaflet** – Open-source library for interactive maps.
+- **react-leaflet** – React bindings for Leaflet to integrate maps into your components.
+
+### Date & Time
+
+- **dayjs** – Lightweight and fast alternative to Moment.js for date manipulation.
+
+### UI Enhancements
+
+- **simplebar-react** – Custom scrollbars with native behavior and styling.
