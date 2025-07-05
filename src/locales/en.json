@@ -43,5 +43,14 @@
   "cancelled": "Cancelled",
   "rejected": "Rejected",
   "search": "Search",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "Pending": "Pending",
+  "Accepted": "Accepted",
+  "Preparing": "Preparing",
+  "Collecting": "Collecting",
+  "OutForDelivery": "Out for Delivery",
+  "Delivered": "Delivered",
+  "Hold": "On Hold",
+  "Refund": "Refunded",
+  "Arrived": "Arrived"
 }

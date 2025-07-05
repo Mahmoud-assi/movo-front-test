@@ -42,5 +42,14 @@
   "cancelled": "تم الإلغاء",
   "rejected": "تم الرفض",
   "search": "بحث",
-  "cancel": "إلغاء"
+  "cancel": "إلغاء",
+  "Pending": "قيد الانتظار",
+  "Accepted": "تم القبول",
+  "Preparing": "قيد التحضير",
+  "Collecting": "قيد التجميع",
+  "OutForDelivery": "في الطريق للتوصيل",
+  "Delivered": "تم التوصيل",
+  "Hold": "معلق",
+  "Refund": "مسترجع",
+  "Arrived": "وصل"
 }

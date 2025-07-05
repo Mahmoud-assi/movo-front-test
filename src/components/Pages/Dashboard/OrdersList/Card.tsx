@@ -131,7 +131,7 @@ export function OrderCard({
         anchorEl={anchorEl}
         handleClose={handleClose}
         placement="bottom-start"
-        sxPaper={{ minWidth: 150 }}
+        sxPaper={{ width: 200 }}
       >
         <Stack spacing={1} sx={{ width: '100%', p: 1 }}>
           <Stack spacing={0.5}>
@@ -144,7 +144,12 @@ export function OrderCard({
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            sx={{ width: '100%' }}
+            sx={{
+              width: '100%',
+              [`.${buttonClasses.root}`]: {
+                width: '100%',
+              },
+            }}
           >
             <Button color="secondary" variant="outlined">
               {f({ id: 'cancel' })}
