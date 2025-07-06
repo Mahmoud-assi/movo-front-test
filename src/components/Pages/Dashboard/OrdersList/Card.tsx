@@ -113,7 +113,7 @@ export function OrderCard({
         }}
       >
         {['status', 'view', 'track', 'delete'].map(b => (
-          <Grid size={{ xs: 3 }}>
+          <Grid size={{ xs: 3 }} key={b}>
             <Button
               variant="outlined"
               color={buttonColor}
@@ -136,7 +136,7 @@ export function OrderCard({
         <Stack spacing={1} sx={{ width: '100%', p: 1 }}>
           <Stack spacing={0.5}>
             {OrderStatuses.map(s => (
-              <MenuItem>{f({ id: s })}</MenuItem>
+              <MenuItem key={s}>{f({ id: s })}</MenuItem>
             ))}
           </Stack>
           <Stack
