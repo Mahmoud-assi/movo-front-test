@@ -87,7 +87,7 @@ const MapContent = ({
   showClose?: boolean
   handleClose?: () => void
 }) => {
-  const { palette } = useTheme()
+  const { palette, direction } = useTheme()
 
   return (
     <Box
@@ -108,7 +108,7 @@ const MapContent = ({
           sx={{
             position: 'absolute',
             top: 16,
-            right: 16,
+            ...(direction === 'ltr' ? { right: 16 } : { left: 16 }),
             zIndex: 1200,
             bgcolor: rgba(palette.background.default, 0.925),
             ':hover': {
